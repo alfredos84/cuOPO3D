@@ -51,9 +51,10 @@ where `ARGUMENTS_TO_PASS` are variables externaly passed to the main file `cuOPO
 This package returns a set of `.dat` files with the signal, idler and pump electric fields, separated into real and imaginary parts. It also returns time and frequency vectors
 
 ### GPU architecture
-Make sure you know your GPU architecture before compiling and running simulations. For example, pay special attention to the sm_75 flag defined in the provided `cuOPO.sh` file. That flag might not be the same for your GPU since it corresponds to a specific architecture. For instance, I tested this package using two different GPUs:
-1. Nvidia Geforce MX250: architecture -> Pascal -> flag: sm_60
-2. Nvidia Geforce GTX1650: architecture -> Turing -> flag: sm_75
+Make sure you know your GPU architecture before compiling and running simulations. For example, pay special attention to the sm_75 flag defined in the provided `cuOPO3D.sh` file. That flag might not be the same for your GPU since it corresponds to a specific architecture. For instance, I tested this package using two different GPUs:
+1. Nvidia Geforce MX250: architecture -> Pascal -> flags: sm_60 and compute_75
+2. Nvidia Geforce GTX1650: architecture -> Turing -> flags: sm_75 and compute_75
+3. Nvidia A40: architecture -> Ampere -> flags: sm_80 and compute_80
 
 Please check the NVIDIA documentation in https://docs.nvidia.com/cuda/
 
