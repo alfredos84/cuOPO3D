@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <fstream>
+#include <iomanip>
+#include <typeinfo>
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include <tuple>
+#include <unordered_set>
+#include <chrono>
+#include <stdio.h>
+
+#include <cuda_runtime.h>
+#include <cufft.h>
+#include <cuda_profiler_api.h>
+#include <thrust/reduce.h>
+#include <thrust/device_vector.h>
+#include <thrust/host_vector.h>
+#include <thrust/complex.h>
+#include <thrust/copy.h>
+#include <thrust/device_ptr.h>
+#include <thrust/transform.h>
+#include <thrust/random.h>
+#include <thrust/functional.h>
+#include <thrust/execution_policy.h>
