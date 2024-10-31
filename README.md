@@ -16,7 +16,7 @@ To install the CUDA driver on a Linux system please visit: https://docs.nvidia.c
 
 To run simulations using the package clone this project typing in a terminal
 ```
-https://github.com/alfredos84/Parallel_OPO_Simulator.git
+https://github.com/alfredos84/cuOPO3D.git
 ```
 Once the project was cloned, the user will find a parent folder `cuOPO3D` containing two other
 - `src`: contains the main file `cuOPO3D.cu`, the headers folder, and the bash file `cuOPO3D.sh` used to compile and execute the package by passing several simulations parameters.
