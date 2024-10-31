@@ -10,11 +10,12 @@ The user is free to use this package either in OPO or single-pass configuration 
 CUDA programming allows you to implement parallel computing in order to speed up calculations that typically require a considerable computational demand.
 
 <--------------------------------------------------------------------------------------------->
+## Setup and execution
 For running this code is necessary to have a GPU in your computer and installed the CUDA drivers and the CUDA-TOOLKIT as well. 
 To install the CUDA driver on a Linux system please visit: https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
 
 
-## Setup and execution
+
 
 To run simulations using the package clone this project typing in a terminal
 ```
