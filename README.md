@@ -34,27 +34,35 @@ Finally, to execute the file execute the following command line
 ./cuOPO3D.sh         # execute the files
 ```
 
-In the `cuOPO.sh` file you will find the command line for the compilation:
+
+
+### GPU architecture and compilation
+Make sure you know your GPU architecture before compiling and running simulations. The following line print on screen GPU information required for perform an optimum compilation base on the GPU architecture.
 ```
-nvcc cuOPO3D.cu -DDIFFRACTION -DDISPERSION -diag-suppress 177 -gencode=arch=compute_60,code=sm_60 -gencode=arch=compute_60,code=compute_60 -O2 -lcufftw -lcufft -o cuOPO3D
+nvidia-smi --query-gpu=name,compute_cap --format=csv
+```   
+In the `cuOPO3D.sh` file you will find the command line for the compilation with a previuos line to detect the GPU capability in the system:
 ```
-The flags `-gencode=...` are related to the GPU architecture (see below more information about this point). The flag `-O2` is the level of optimization, and can be omited or changed by the user. The flags `-lcufftw` and `-lcufft` tell the compiler to use the `CUFFT library` that performs the Fourier transform on GPU.
+# Detect Compute Capability of available GPUs
+COMPUTE_CAP=$(nvidia-smi --query-gpu=compute_cap --format=csv,noheader | tr -d '.')
+# Compile with nvcc
+nvcc cuOPO3D.cu -DDISPERSION -DDIFFRACTION \
+    -gencode=arch=compute_${COMPUTE_CAP},code=sm_${COMPUTE_CAP} \
+    -gencode=arch=compute_${COMPUTE_CAP},code=compute_${COMPUTE_CAP} \
+    -O3 -lcufftw -lcufft -o cuOPO3D
+```
+The flags `-gencode=...` and `code=` are related to the GPU architecture. The flag `-O3` is the level of optimization, and can be omited or changed by the user (please check `nvcc` documentation). The flags `-lcufftw` and `-lcufft` tell the compiler to use the `CUFFT library` that performs the Fourier transform on GPU.
 
 Finally, the execution is done using the command line in the `cuOPO3D.sh` file is
 ```
 ./cuOPO3D <ARGUMENTS_TO_PASS>
 ```
-where `ARGUMENTS_TO_PASS` are variables externaly passed to the main file `cuOPO3D.cu`.
+where `ARGUMENTS_TO_PASS` are variables externaly passed to the main file `cuOPO3D.cu`. Arguments to externaly pass are now pump power and beam waist, but user can modify this in `cuOPO3D.cu` file by using `atof(argv[...])`
 
 ### Outputs
 
 This package returns a set of `.dat` files with the signal, idler and pump electric fields, separated into real and imaginary parts. It also returns time and frequency vectors
 
-### GPU architecture
-Make sure you know your GPU architecture before compiling and running simulations. For example, pay special attention to the sm_75 flag defined in the provided `cuOPO3D.sh` file. That flag might not be the same for your GPU since it corresponds to a specific architecture. For instance, I tested this package using two different GPUs:
-1. Nvidia Geforce MX250: architecture -> Pascal -> flags: sm_60 and compute_75
-2. Nvidia Geforce GTX1650: architecture -> Turing -> flags: sm_75 and compute_75
-3. Nvidia A40: architecture -> Ampere -> flags: sm_80 and compute_80
 
 Please check the NVIDIA documentation in https://docs.nvidia.com/cuda/
 
