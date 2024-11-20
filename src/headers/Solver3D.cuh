@@ -1004,7 +1004,7 @@ void Solver<Crystal>::runOPO(const std::vector<int>& save_roundtrips)
 				}
 			}
 			
-			// if (rt == 0){RemainingTime( rt, measuredTime(iStart) );}
+			if (rt == 0){RemainingTime( rt, measuredTime(iStart) );}
 			
 			runOPO_status (rt, NRT/10); // print simulation status on screen
 			
