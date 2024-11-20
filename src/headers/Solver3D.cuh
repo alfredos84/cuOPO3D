@@ -151,10 +151,10 @@ __global__ void kernelAddGDD(complex_t *A, complex_t *aux, real_t *w, real_t GDD
 
 // This kernel set the linear propagator operators useful in dispersion calculations
 __global__ void dispersionPropagators ( complex_t *eiLz_p, complex_t *eiLz_s, complex_t *eiLz_i, 
-										real_t vp, real_t vs, real_t vi, 
-										real_t b2p, real_t b2s, real_t b2i,
-										real_t alpha_crp, real_t alpha_crs, real_t alpha_cri,
-										real_t dz, real_t *w )
+					real_t vp, real_t vs, real_t vi, 
+					real_t b2p, real_t b2s, real_t b2i,
+					real_t alpha_crp, real_t alpha_crs, real_t alpha_cri,
+					real_t dz, real_t *w )
 {	
 			
 	uint32_t idw = threadIdx.x + blockDim.x*blockIdx.x;
@@ -199,8 +199,8 @@ __global__ void tensor2D_to_3D(	complex_t *Ax3D, complex_t *Ax2D)
 
 // Reorganize 3D tensor to 2D array
 __global__ void tensor3D_to_2D_3Fileds(	complex_t *Ap2D, complex_t *Ap3D,
-										complex_t *As2D, complex_t *As3D,
-										complex_t *Ai2D, complex_t *Ai3D)
+					complex_t *As2D, complex_t *As3D,
+					complex_t *Ai2D, complex_t *Ai3D)
 {
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -219,8 +219,8 @@ __global__ void tensor3D_to_2D_3Fileds(	complex_t *Ap2D, complex_t *Ap3D,
 
 // Reorganize 2D array back to 3D tensor
 __global__ void tensor2D_to_3D_3Fileds(	complex_t *Ap3D, complex_t *Ap2D,
-										complex_t *As3D, complex_t *As2D,
-										complex_t *Ai3D, complex_t *Ai2D)
+					complex_t *As3D, complex_t *As2D,
+					complex_t *Ai3D, complex_t *Ai2D)
 {
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -239,8 +239,8 @@ __global__ void tensor2D_to_3D_3Fileds(	complex_t *Ap3D, complex_t *Ap2D,
 
 // Product of complex numbers in GPU for Dispersion propagator
 __global__ void kernelDispersionPropagatorProduct(	complex_t *Awp_prop, complex_t *Awp, complex_t *eiLz_p,
-													complex_t *Aws_prop, complex_t *Aws, complex_t *eiLz_s,
-													complex_t *Awi_prop, complex_t *Awi, complex_t *eiLz_i )
+							complex_t *Aws_prop, complex_t *Aws, complex_t *eiLz_s,
+							complex_t *Awi_prop, complex_t *Awi, complex_t *eiLz_i )
 {
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -280,10 +280,10 @@ __global__ void kernelGDDCompensation(complex_t *Ax, complex_t *aux, real_t *w, 
 
 // This kernel set the beam propagator operators useful in diffraction calculations
 __global__ void kernelSetDiffractionPropagator ( complex_t *eiQz_p, complex_t *eiQz_s, complex_t *eiQz_i, 
-										real_t uX, real_t uY,
-										real_t dx, real_t dy, real_t dz,
-										real_t kp, real_t ks, real_t ki,
-										real_t ap, real_t as, real_t ai )
+						real_t uX, real_t uY,
+						real_t dx, real_t dy, real_t dz,
+						real_t kp, real_t ks, real_t ki,
+						real_t ap, real_t as, real_t ai )
 {	
 	real_t dfX  = 1/dx/NX;	real_t dfY  = 1/dy/NY;
 		
@@ -302,11 +302,11 @@ __global__ void kernelSetDiffractionPropagator ( complex_t *eiQz_p, complex_t *e
 
 
 // This kernel set the beam propagator operators useful in diffraction calculations
-__global__ void kernelSetDiffractionPropagatorInFreeSpace ( complex_t *eiQz_s, complex_t *eiQz_i, 
-															real_t uX, real_t uY,
-															real_t dx, real_t dy,
-															real_t ks, real_t ki,
-															real_t length )
+__global__ void kernelSetDiffractionPropagatorInFreeSpace ( complex_t *eiQz_s, complex_t *eiQz_i,
+							real_t uX, real_t uY,
+							real_t dx, real_t dy,
+							real_t ks, real_t ki,
+							real_t length )
 {	
 	real_t dfX  = 1/dx/NX;	real_t dfY  = 1/dy/NY;
 		
@@ -325,8 +325,8 @@ __global__ void kernelSetDiffractionPropagatorInFreeSpace ( complex_t *eiQz_s, c
 
 // Product of complex numbers in GPU for Diffraction propagator
 __global__ void kernelDiffractionPropagatorProduct (complex_t *AQp_propagated, complex_t *eiQz_p, complex_t *AQp,
-													complex_t *AQs_propagated, complex_t *eiQz_s, complex_t *AQs,
-													complex_t *AQi_propagated, complex_t *eiQz_i, complex_t *AQi )
+						complex_t *AQs_propagated, complex_t *eiQz_s, complex_t *AQs,
+						complex_t *AQi_propagated, complex_t *eiQz_i, complex_t *AQi )
 {	
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -345,7 +345,7 @@ __global__ void kernelDiffractionPropagatorProduct (complex_t *AQp_propagated, c
 
 // Product of complex numbers in GPU for Diffraction propagator
 __global__ void kernelDiffractionPropagatorProductInFreeSpace (	complex_t *AQs_propagated, complex_t *eiQz_s, complex_t *AQs,
-																complex_t *AQi_propagated, complex_t *eiQz_i, complex_t *AQi )
+								complex_t *AQi_propagated, complex_t *eiQz_i, complex_t *AQi )
 {	
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -384,8 +384,8 @@ __global__ void dAdz( complex_t *dAp, complex_t *dAs,  complex_t *dAi, complex_t
 
 /** Computes a linear combination Ax + s.kx and saves the result in aux_x */
 __global__ void kernelLinealCombination(complex_t *auxp, complex_t *auxs, complex_t *auxi,
-								   		complex_t *Ap, complex_t *As, complex_t *Ai, 
-								   		complex_t *kp, complex_t *ks, complex_t *ki, real_t s )
+					complex_t *Ap, complex_t *As, complex_t *Ai, 
+					complex_t *kp, complex_t *ks, complex_t *ki, real_t s )
 {
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
 	uint32_t idy = threadIdx.y + blockDim.y*blockIdx.y;
@@ -404,10 +404,10 @@ __global__ void kernelLinealCombination(complex_t *auxp, complex_t *auxs, comple
 
 /** This kernel computes the final sum after appling the Rounge-Kutta algorithm */
 __global__ void rk4(complex_t *Ap, complex_t *As,  complex_t *Ai, 
-					complex_t *k1p, complex_t *k1s, complex_t *k1i, 
-					complex_t *k2p, complex_t *k2s, complex_t *k2i, 
-					complex_t *k3p, complex_t *k3s, complex_t *k3i,
-					complex_t *k4p, complex_t *k4s, complex_t *k4i, real_t dz )
+		complex_t *k1p, complex_t *k1s, complex_t *k1i, 
+		complex_t *k2p, complex_t *k2s, complex_t *k2i, 
+		complex_t *k3p, complex_t *k3s, complex_t *k3i,
+		complex_t *k4p, complex_t *k4s, complex_t *k4i, real_t dz )
 {
 	
 	uint32_t idx = threadIdx.x + blockDim.x*blockIdx.x;
