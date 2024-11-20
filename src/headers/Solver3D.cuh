@@ -251,7 +251,7 @@ __global__ void kernelDispersionPropagatorProduct(	complex_t *Awp_prop, complex_
 			Aws_prop[IDX(idt, idx + NX * idy)] = Aws[IDX(idt, idx + NX * idy)] * eiLz_s[IDX(idt)];
 			Awi_prop[IDX(idt, idx + NX * idy)] = Awi[IDX(idt, idx + NX * idy)] * eiLz_i[IDX(idt)];
 		}
-    }
+    	}
 
 	return ;
 }
@@ -271,7 +271,7 @@ __global__ void kernelGDDCompensation(complex_t *Ax, complex_t *aux, real_t *w, 
 		if( idx < NX and idy < NY ){
 			Ax[IDX(idt, idx + NX * idy)] = aux[IDX(idt, idx + NX * idy)];
 		}
-    }
+    	}
 	
 	return ;
 }
