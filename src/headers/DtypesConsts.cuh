@@ -52,9 +52,9 @@ const uint32_t BLKY   = BLKX;		// block dimensions for kernels
 
 // Define global constants
 const uint32_t NRT    = 10000;                       // number of round trips    
-const real_t PI   = 3.14159265358979323846;		// pi
-const real_t C    = 299792458*1E6/1E12;			// speed of ligth in vacuum [um/ps]
-const real_t EPS0 = 8.8541878128E-12*1E12/1E6;	// vacuum pertivity [W.ps/V²μm] 
+const real_t PI       = 3.14159265358979323846;		// pi
+const real_t C        = 299792458*1E6/1E12;			// speed of ligth in vacuum [um/ps]
+const real_t EPS0     = 8.8541878128E-12*1E12/1E6;	// vacuum pertivity [W.ps/V²μm] 
 
 
 // Memory size for vectors and matrices
