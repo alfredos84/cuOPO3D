@@ -28,7 +28,7 @@ rm -r waist_31/
 
 COMPILER=nvcc
 printf "\nCompiler           = ${COMPILER}" 
-OPT=2
+OPT=3
 printf "\nOptimization level = ${OPT}\n" 
 nvidia-smi --query-gpu=name,compute_cap --format=csv
 
