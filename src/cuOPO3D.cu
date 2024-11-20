@@ -72,8 +72,8 @@ int main(int argc, char *argv[]){
 	// By default is set `slice=NT/2` here. Users can uncomment the `for()` and replace 
 	// `NT/2` by `slice` variable in case of need all the field evolution.	
 	
-	// for (uint slice = 0; slice < NT; slice ++)
-	saveMatrixComplex_TimeSlice ( A->As, NT/2, "Output_signal_power_" + std::to_string(atoi(argv[1])) + "_mW" );
+	for (uint slice = 0; slice < NT; slice ++)
+		saveMatrixComplex_TimeSlice ( A->As, slice, "OutputSignalPower_PumpPower" + std::to_string(atoi(argv[1])) + "_W_slice" + std::to_string(slice) );
 
 
 	// Save output signal electric field in the temporal domain.
