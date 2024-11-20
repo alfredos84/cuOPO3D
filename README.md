@@ -51,7 +51,7 @@ nvcc cuOPO3D.cu -DDISPERSION -DDIFFRACTION \
     -gencode=arch=compute_${COMPUTE_CAP},code=compute_${COMPUTE_CAP} \
     -O3 -lcufftw -lcufft -o cuOPO3D
 ```
-The flags `-gencode=...` and `code=` are related to the GPU architecture. The flag `-O3` is the level of optimization, and can be omited or changed by the user (please check `nvcc` documentation). The flags `-lcufftw` and `-lcufft` tell the compiler to use the `CUFFT library` that performs the Fourier transform on GPU.
+The flags `-gencode=...` and `code=` are related to the GPU architecture. The flag `-O3` is the level of optimization, and can be omited or changed by the user (please check `nvcc` documentation). The flags `-lcufftw` and `-lcufft` tell the compiler to use the `CUFFT library` that performs the Fourier transform on GPU. Preprocessor variables `DISPERSION` and `DIFFRACTION` indicate the optical effects that are included in simulations.
 
 Finally, the execution is done using the command line in the `cuOPO3D.sh` file is
 ```
