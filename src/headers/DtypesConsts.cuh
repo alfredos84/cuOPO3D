@@ -27,7 +27,7 @@ using cVecd_t = thrust::device_vector<complex_t>;
 // Define grid size
 
 #ifdef DIFFRACTION
-const uint32_t NX     = 1 << 5;		// size in X direction
+const uint32_t NX     = 1 << 7;		// size in X direction
 const uint32_t NY     = NX; 		// size in Y direction
 #ifdef DISPERSION
 const uint32_t NT     = 1 << 11;	// vector size
